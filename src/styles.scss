@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  transition: color 150ms linear;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.ff-container {
+  margin: 0 auto;
+  position: relative;
+  max-width: 1180px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
+}

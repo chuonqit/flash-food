@@ -1,0 +1,35 @@
+.app-breadcrumb {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  margin-bottom: 1.6rem;
+  flex-wrap: wrap;
+
+  &--item {
+    & + & {
+      &::before {
+        content: "/";
+        margin-left: 0.7rem;
+        margin-right: 0.7rem;
+        color: rgba(0, 0, 0, 0.45);
+      }
+    }
+  }
+
+  &--link {
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.45);
+    &:hover {
+      color: #002366;
+    }
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+    &__active {
+      color: #111111;
+    }
+  }
+}
