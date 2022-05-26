@@ -29,13 +29,37 @@ a {
   height: 0;
 }
 
-.ff-container {
-  margin: 0 auto;
+.container {
   position: relative;
   max-width: 1180px;
-  width: 100%;
+  min-width: 1180px;
+  padding: 0 15px;
+  margin: 0 auto;
+  width: 1180px;
+  padding-bottom: 30px;
+}
 
-  @media (max-width: 768px) {
-    padding: 0 20px;
+.button-view-more {
+  appearance: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 9px 20px 6px;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  background-color: #ebebeb;
+  color: #333333;
+  width: 200px;
+  margin: 10px auto;
+  border: 1px solid #dddddd;
+  transition: background-color 150ms linear, color 150ms linear;
+
+  &:hover {
+    background-color: #e0e0e0;
   }
 }

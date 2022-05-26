@@ -7,11 +7,9 @@ import { HomeCategoryElement } from 'src/app/shared/models/Category.model';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent {
-  @Input('title') categoryTitle: string | null;
   @Input('data') categories: HomeCategoryElement[];
 
   constructor() {
-    this.categoryTitle = null;
     this.categories = [];
   }
 }

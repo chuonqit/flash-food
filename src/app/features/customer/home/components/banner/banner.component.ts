@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   template: `
     <section
       *ngIf="bannerImage"
-      class="ff-top-banner"
+      class="top-banner"
       [class.position]="textAlign"
       [class.center]="textAlign === 'center'"
       [class.right]="textAlign === 'right'"
@@ -13,13 +13,10 @@ import { Component, Input, OnInit } from '@angular/core';
       style="background-image: url({{ bannerImage }});"
     >
       <h1 *ngIf="bannerTitle">
-        <span
-          class="ff-top-banner--title__highlight"
-          *ngIf="bannerTitleHighlight"
-        >
+        <span class="top-banner--title__highlight" *ngIf="bannerTitleHighlight">
           {{ bannerTitleHighlight }}
         </span>
-        <span class="ff-top-banner--title">
+        <span class="top-banner--title">
           {{ bannerTitle }}
         </span>
       </h1>

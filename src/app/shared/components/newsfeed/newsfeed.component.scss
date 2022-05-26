@@ -1,0 +1,20 @@
+.newsfeed {
+  padding: 30px 0 0;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+
+  &--title {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & h2 {
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+  }
+}

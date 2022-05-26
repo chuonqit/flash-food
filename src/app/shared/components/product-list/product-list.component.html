@@ -1,0 +1,19 @@
+<app-newsfeed [title]="title" *ngIf="products.length > 0">
+  <div class="product-list--content">
+    <div
+      *ngFor="let product of products"
+      class="product-list--content__item"
+      [title]="product.name"
+    >
+      <div
+        class="product-list--content__image"
+        style="background-image: url('{{ product.image }}')"
+      ></div>
+      <div class="product-list--content__content">
+        <div class="name">{{ product.name }}</div>
+        <div class="price">{{ product.price }}</div>
+      </div>
+    </div>
+  </div>
+  <ng-content></ng-content>
+</app-newsfeed>

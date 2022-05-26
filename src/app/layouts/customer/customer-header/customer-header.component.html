@@ -1,38 +1,34 @@
 <!-- <img src="/assets/images/flashfood.png" alt="" /> -->
-<div class="ff-navbar">
-  <section class="ff-container">
+<div class="navbar">
+  <section class="container">
     <a
       routerLink="/"
-      class="ff-navbar--logo"
+      class="navbar--logo"
       style="background-image: url('/assets/images/flashfood.png')"
     ></a>
-    <div class="ff-navbar--menu">
+    <div class="navbar--menu">
       <a
-        class="ff-navbar--menu__link"
+        class="navbar--menu__link"
         routerLink="/do-an"
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
       >
         Đồ ăn
       </a>
       <a
-        class="ff-navbar--menu__link"
+        class="navbar--menu__link"
         routerLink="/do-uong"
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
       >
         Đồ uống
       </a>
       <a
-        class="ff-navbar--menu__link"
-        routerLink="/dang-khuyen-mai"
+        class="navbar--menu__link"
+        routerLink="/khuyen-mai"
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
       >
-        Đang Khuyến Mãi
+        Khuyến Mãi
       </a>
     </div>
     <div class="flex-grow"></div>
-    <a class="ff-navbar--btn" routerLink="/thanh-vien"> Thành viên </a>
   </section>
 </div>

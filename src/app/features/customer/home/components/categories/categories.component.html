@@ -1,23 +1,18 @@
-<section class="ff-newsfeed">
-  <div class="ff-newsfeed--title" *ngIf="categoryTitle">
-    <h2>{{ categoryTitle }}</h2>
+<app-newsfeed title="Chọn theo thể loại">
+  <div class="newsfeed--list-view">
+    <a
+      class="newsfeed--list-item"
+      [title]="category.name"
+      routerLink="/{{ category.parentAscii }}/{{ category.nameAscii }}"
+      *ngFor="let category of categories"
+    >
+      <div
+        class="newsfeed--list-item__image"
+        style="background-image: url('{{ category.image }}')"
+      ></div>
+      <div class="newsfeed--list-item__content">
+        <span>{{ category.name }}</span>
+      </div>
+    </a>
   </div>
-  <div class="ff-newsfeed--content">
-    <div class="ff-newsfeed--list-view" *ngIf="categories.length > 0">
-      <a
-        class="ff-newsfeed--list-item"
-        [title]="category.name"
-        href="/{{ category.parentAscii }}/{{ category.nameAscii }}"
-        *ngFor="let category of categories"
-      >
-        <div
-          class="ff-newsfeed--list-item__image"
-          style="background-image: url('{{ category.image }}')"
-        ></div>
-        <div class="ff-newsfeed--list-item__content">
-          <span>{{ category.name }}</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
+</app-newsfeed>

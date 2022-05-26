@@ -12,11 +12,6 @@ const routes: Routes = [
       import('./products/products.module').then((m) => m.ProductsModule),
   },
   {
-    path: 'thanh-vien',
-    loadChildren: () =>
-      import('./member/member.module').then((m) => m.MemberModule),
-  },
-  {
     path: '**',
     pathMatch: 'full',
     redirectTo: '',

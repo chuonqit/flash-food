@@ -14,7 +14,7 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'dang-khuyen-mai',
+        path: 'khuyen-mai',
         component: PromotionComponent,
       },
     ],

@@ -5,9 +5,16 @@
   align="center"
 ></app-banner>
 
-<div class="ff-container">
-  <app-categories
-    title="Chọn theo thể loại"
-    [data]="categories"
-  ></app-categories>
+<div class="container">
+  <app-categories [data]="categories"></app-categories>
+  <app-product-list title="MÓN MỚI" [data]="products"></app-product-list>
+  <app-product-list title="Khuyến mãi" [data]="products">
+    <a class="button-view-more" routerLink="/khuyen-mai"> Xem thêm </a>
+  </app-product-list>
+  <app-product-list title="Đồ ăn" [data]="products">
+    <a class="button-view-more" routerLink="/do-an"> Xem thêm </a>
+  </app-product-list>
+  <app-product-list title="Đồ uống" [data]="products">
+    <a class="button-view-more" routerLink="/do-uong"> Xem thêm </a>
+  </app-product-list>
 </div>
