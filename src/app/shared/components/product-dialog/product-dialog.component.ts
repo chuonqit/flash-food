@@ -26,4 +26,13 @@ export class ProductDialogComponent implements OnInit {
       this.quantity = 1;
     }
   }
+
+  handleAddCart(note: string) {
+    console.log({
+      data: this.data,
+      quantity: this.quantity,
+      note: note,
+      total: this.data.price * this.quantity,
+    });
+  }
 }

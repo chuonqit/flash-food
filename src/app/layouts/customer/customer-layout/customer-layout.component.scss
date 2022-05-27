@@ -3,5 +3,23 @@
   position: relative;
   min-width: 1180px;
   width: 100%;
+  margin-top: 50px;
   padding-bottom: 30px;
+}
+
+.button-scroll-top {
+  background-color: #412fdc;
+  color: #ffffff;
+  border-radius: 6px;
+  border: 0;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 999999;
 }

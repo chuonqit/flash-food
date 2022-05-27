@@ -12,7 +12,9 @@
       ></div>
       <div class="product-list--content__content">
         <div class="name">{{ product.name }}</div>
-        <div class="price">{{ product.price }}</div>
+        <div class="price">
+          {{ product.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }}
+        </div>
       </div>
     </div>
   </div>

@@ -9,6 +9,7 @@ import { PromotionComponent } from './promotion/promotion.component';
 import { FoodComponent } from './products/food/food.component';
 import { DrinkComponent } from './products/drink/drink.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MaterialModule } from 'src/app/materials/material.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FoodComponent,
     DrinkComponent,
   ],
-  imports: [CommonModule, CustomerRoutingModule, SharedModule],
+  imports: [CommonModule, CustomerRoutingModule, SharedModule, MaterialModule],
 })
 export class CustomerModule {}

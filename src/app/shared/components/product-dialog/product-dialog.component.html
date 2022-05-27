@@ -16,12 +16,16 @@
     <div class="dialog-item--content">
       <div class="name">{{ data.name }}</div>
       <div class="price">
-        {{ data.price }}
+        {{ data.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }}
       </div>
       <div class="quantity">
-        <mat-icon (click)="decrease()">indeterminate_check_box</mat-icon>
+        <button>
+          <mat-icon (click)="decrease()">indeterminate_check_box</mat-icon>
+        </button>
         <input type="number" min="1" [value]="quantity" autofocus />
-        <mat-icon (click)="increase()">add_box</mat-icon>
+        <button>
+          <mat-icon (click)="increase()">add_box</mat-icon>
+        </button>
       </div>
       <div class="description">
         Thành phần món ăn bao gồm: - Bánh đa ( chính gốc Quỳnh Côi) - Cá chiên
@@ -35,9 +39,12 @@
       matInput
       rows="3"
       placeholder="Ví dụ: thêm đá, thêm đường..."
+      #note
     ></textarea>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="primary">Thêm +{{ data.price }}</button>
+  <button mat-raised-button color="primary" (click)="handleAddCart(note.value)">
+    Thêm +{{ data.price * quantity | currency: "đ":"symbol":"1.0-0":"vi-VN" }}
+  </button>
 </div>

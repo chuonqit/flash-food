@@ -1,5 +1,8 @@
 <app-customer-header></app-customer-header>
 <div class="content">
   <router-outlet></router-outlet>
+  <button (click)="scrollToTop()" class="button-scroll-top" *ngIf="isScrollTop">
+    <mat-icon>arrow_upward</mat-icon>
+  </button>
 </div>
 <app-customer-footer></app-customer-footer>
