@@ -1,20 +1,41 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CustomerLayoutComponent } from 'src/app/layouts/customer/customer-layout/customer-layout.component';
+import { HomeComponent } from './home/home.component';
+import { PromotionComponent } from './promotion/promotion.component';
+import { DrinkComponent } from './products/drink/drink.component';
+import { FoodComponent } from './products/food/food.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
-  },
-  {
-    path: '',
-    loadChildren: () =>
-      import('./products/products.module').then((m) => m.ProductsModule),
-  },
-  {
-    path: '**',
-    pathMatch: 'full',
-    redirectTo: '',
+    component: CustomerLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+      },
+      {
+        path: 'khuyen-mai',
+        component: PromotionComponent,
+      },
+      {
+        path: 'do-an',
+        component: FoodComponent,
+      },
+      {
+        path: 'do-uong',
+        component: DrinkComponent,
+      },
+      {
+        path: 'do-an/:childrenAscii',
+        component: FoodComponent,
+      },
+      {
+        path: 'do-uong/:childrenAscii',
+        component: DrinkComponent,
+      },
+    ],
   },
 ];
 

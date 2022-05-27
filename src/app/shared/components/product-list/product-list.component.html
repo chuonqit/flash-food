@@ -4,6 +4,7 @@
       *ngFor="let product of products"
       class="product-list--content__item"
       [title]="product.name"
+      (click)="openProductDialog(product)"
     >
       <div
         class="product-list--content__image"

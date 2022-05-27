@@ -4,10 +4,22 @@ import { CommonModule } from '@angular/common';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
+import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
+import { MaterialModule } from '../materials/material.module';
 
 @NgModule({
-  declarations: [BreadcrumbComponent, ProductListComponent, NewsfeedComponent],
-  imports: [RouterModule, CommonModule],
-  exports: [BreadcrumbComponent, ProductListComponent, NewsfeedComponent],
+  declarations: [
+    BreadcrumbComponent,
+    ProductListComponent,
+    NewsfeedComponent,
+    ProductDialogComponent,
+  ],
+  imports: [RouterModule, CommonModule, MaterialModule],
+  exports: [
+    BreadcrumbComponent,
+    ProductListComponent,
+    NewsfeedComponent,
+    ProductDialogComponent,
+  ],
 })
 export class SharedModule {}
