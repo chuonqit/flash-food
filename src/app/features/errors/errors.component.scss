@@ -1,0 +1,23 @@
+.content {
+  background-color: #f6f6f6;
+  position: relative;
+  min-width: 1180px;
+  width: 100%;
+  padding: 50px 0;
+
+  & .page-not-found {
+    text-align: center;
+
+    & img {
+      border-style: none;
+      margin-bottom: 40px;
+    }
+
+    & h2 {
+      font-size: 72px;
+      line-height: 72px;
+      margin-bottom: 0;
+      display: block;
+    }
+  }
+}

@@ -1,1 +1,43 @@
-{{ data | json }}
+<div mat-dialog-title>
+  <mat-icon mat-dialog-close class="close-btn flex-grow">close</mat-icon>
+  <h2>Chọn món</h2>
+  <div class="flex-grow"></div>
+</div>
+<div mat-dialog-content>
+  <div class="dialog-item">
+    <div class="image">
+      <div
+        class="img"
+        style="
+      background-image: url('{{ data.image }}');
+    "
+      ></div>
+    </div>
+    <div class="dialog-item--content">
+      <div class="name">{{ data.name }}</div>
+      <div class="price">
+        {{ data.price }}
+      </div>
+      <div class="quantity">
+        <mat-icon (click)="decrease()">indeterminate_check_box</mat-icon>
+        <input type="number" min="1" [value]="quantity" autofocus />
+        <mat-icon (click)="increase()">add_box</mat-icon>
+      </div>
+      <div class="description">
+        Thành phần món ăn bao gồm: - Bánh đa ( chính gốc Quỳnh Côi) - Cá chiên
+        giòn, dai - Rau thơm, gia vị ...
+      </div>
+    </div>
+  </div>
+  <mat-form-field appearance="standard" style="width: 100%">
+    <mat-label>Ghi chú</mat-label>
+    <textarea
+      matInput
+      rows="3"
+      placeholder="Ví dụ: thêm đá, thêm đường..."
+    ></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary">Thêm +{{ data.price }}</button>
+</div>

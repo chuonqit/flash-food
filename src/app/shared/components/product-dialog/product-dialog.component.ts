@@ -8,7 +8,22 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./product-dialog.component.scss'],
 })
 export class ProductDialogComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: ProductElement) {}
+  quantity: number;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ProductElement) {
+    this.quantity = 1;
+  }
 
   ngOnInit(): void {}
+
+  increase() {
+    this.quantity += 1;
+  }
+
+  decrease() {
+    this.quantity -= 1;
+    if (this.quantity <= 1) {
+      this.quantity = 1;
+    }
+  }
 }

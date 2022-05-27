@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit {
 
   openProductDialog(data: ProductElement) {
     return this._dialog.open(ProductDialogComponent, {
-      width: '550px',
+      width: '620px',
       data,
     });
   }

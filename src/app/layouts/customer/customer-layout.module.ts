@@ -7,8 +7,12 @@ import { CustomerLayoutComponent } from './customer-layout/customer-layout.compo
 import { CustomerFooterComponent } from './customer-footer/customer-footer.component';
 
 @NgModule({
-  declarations: [CustomerHeaderComponent, CustomerLayoutComponent, CustomerFooterComponent],
+  declarations: [
+    CustomerHeaderComponent,
+    CustomerLayoutComponent,
+    CustomerFooterComponent,
+  ],
   imports: [RouterModule, CommonModule],
-  exports: [CustomerHeaderComponent],
+  exports: [CustomerHeaderComponent, CustomerFooterComponent],
 })
 export class CustomerLayoutModule {}

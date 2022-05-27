@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ErrorsComponent } from './features/errors/errors.component';
 
 const routes: Routes = [
   {
@@ -16,8 +17,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/',
-    pathMatch: 'full',
+    component: ErrorsComponent,
   },
 ];
 
