@@ -36,6 +36,12 @@ a {
   padding: 0 15px;
   margin: 0 auto;
   width: 1180px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+  }
 }
 
 .button-view-more {
@@ -61,5 +67,38 @@ a {
 
   &:hover {
     background-color: #e0e0e0;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cdk-overlay-pane {
+    width: 100vw !important;
+    min-width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  app-product-dialog.ng-star-inserted {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  .mat-dialog-title {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+  }
+
+  mat-dialog-container.mat-dialog-container {
+    border-radius: 0 !important;
+  }
+
+  .mat-dialog-content {
+    height: 100%;
+    flex: 1;
+    max-height: 100% !important;
   }
 }

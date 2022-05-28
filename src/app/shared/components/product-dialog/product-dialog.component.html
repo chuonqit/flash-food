@@ -44,7 +44,12 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="primary" (click)="handleAddCart(note.value)">
+  <button
+    mat-raised-button
+    mat-dialog-close
+    color="primary"
+    (click)="handleAddCart(note.value)"
+  >
     Thêm +{{ data.price * quantity | currency: "đ":"symbol":"1.0-0":"vi-VN" }}
   </button>
 </div>

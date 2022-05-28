@@ -5,6 +5,12 @@
   width: 100%;
   margin-top: 50px;
   padding-bottom: 30px;
+
+  @media (max-width: 768px) {
+    min-width: 100%;
+    width: 100%;
+    margin-top: 90px;
+  }
 }
 
 .button-scroll-top {
@@ -21,5 +27,5 @@
   bottom: 20px;
   right: 20px;
   cursor: pointer;
-  z-index: 999999;
+  z-index: 999;
 }

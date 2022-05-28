@@ -9,6 +9,14 @@
     <div class="navbar--menu">
       <a
         class="navbar--menu__link"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Trang chủ
+      </a>
+      <a
+        class="navbar--menu__link"
         routerLink="/do-an"
         routerLinkActive="active"
       >
@@ -25,6 +33,7 @@
         class="navbar--menu__link"
         routerLink="/khuyen-mai"
         routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
         Khuyến Mãi
       </a>

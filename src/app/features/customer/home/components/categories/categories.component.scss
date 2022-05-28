@@ -3,11 +3,19 @@
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     margin: 0 -5px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   &--list-item {
     width: 115px;
     padding: 0 5px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
 
     &:hover &__image {
       box-shadow: 1px 2px 10px #ddd;
@@ -22,6 +30,10 @@
       opacity: 1;
       padding-bottom: 100%;
       transition: box-shadow 250ms linear;
+
+      @media (max-width: 768px) {
+        height: 88px;
+      }
     }
 
     &__content {
