@@ -1,0 +1,5 @@
+.list-custom {
+  & mat-list {
+    border: 1px solid !important;
+  }
+}

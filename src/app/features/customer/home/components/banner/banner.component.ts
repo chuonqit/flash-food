@@ -13,11 +13,7 @@ import {
     <div class="home-top">
       <section
         *ngIf="bannerImage"
-        class="top-banner"
-        [class.position]="textAlign"
-        [class.center]="textAlign === 'center'"
-        [class.right]="textAlign === 'right'"
-        [class.left]="textAlign === 'left'"
+        class="top-banner position"
         style="background-image: url({{ bannerImage }});"
         [title]="bannerTitleHighlight + ' ' + bannerTitle"
       >
@@ -34,7 +30,7 @@ import {
         </h1>
       </section>
       <div class="search" title="Tìm kiếm đồ ăn, nước uống...">
-        <div class="form" [class.result]="isSearch">
+        <div class="form" [class.result]="isSearch || isLoading">
           <mat-icon *ngIf="!isSearch">search</mat-icon>
           <mat-icon
             *ngIf="isSearch"
@@ -49,7 +45,10 @@ import {
             (keyup)="onKeyUp(inputSearch.value)"
             autocomplete="off"
           />
-          <div class="result-search" *ngIf="searchResult.length > 0">
+          <div
+            class="result-search"
+            *ngIf="isSearch && searchResult.length > 0"
+          >
             <mat-list>
               <mat-list-item
                 *ngFor="let product of searchResult"
@@ -87,20 +86,18 @@ export class BannerComponent implements OnInit {
   @Input('image') bannerImage: string | null;
   @Input('title') bannerTitle: string | null;
   @Input('title-highlight') bannerTitleHighlight: string | null;
-  @Input('align') textAlign: 'center' | 'left' | 'right' | null;
 
-  searchResult: ProductElement[];
   isSearch: boolean;
   isLoading: boolean;
+  searchResult: ProductElement[];
 
   constructor(public _dialog: MatDialog) {
+    this.isSearch = false;
+    this.isLoading = false;
+    this.searchResult = [];
     this.bannerTitle = null;
     this.bannerImage = null;
     this.bannerTitleHighlight = null;
-    this.textAlign = null;
-    this.searchResult = [];
-    this.isSearch = false;
-    this.isLoading = false;
   }
 
   ngOnInit() {
@@ -117,12 +114,14 @@ export class BannerComponent implements OnInit {
   }
 
   onKeyUp(value: string) {
+    this.isSearch = false;
     if (value.trim()) {
       this.isLoading = true;
-      return this.subject.next(value);
+      this.subject.next(value);
+    } else {
+      this.isLoading = false;
+      this.searchResult = [];
     }
-    this.isSearch = false;
-    this.searchResult = [];
   }
 
   handleSearchChange(value: string) {

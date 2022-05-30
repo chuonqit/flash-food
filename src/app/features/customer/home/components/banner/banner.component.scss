@@ -18,20 +18,7 @@
   &.position {
     display: flex;
     align-items: center;
-
-    &.center {
-      justify-content: center;
-    }
-
-    &.left {
-      justify-content: flex-start;
-      padding-left: 30px;
-    }
-
-    &.right {
-      justify-content: flex-end;
-      padding-right: 30px;
-    }
+    justify-content: center;
 
     & h1 {
       padding-top: 0;

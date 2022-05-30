@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductNewComponent } from './products/product-new/product-new.component';
 import { ProductUpdateComponent } from './products/product-update/product-update.component';
+import { MaterialModule } from 'src/app/materials/material.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,6 @@ import { ProductUpdateComponent } from './products/product-update/product-update
     ProductNewComponent,
     ProductUpdateComponent,
   ],
-  imports: [CommonModule, AdminRoutingModule, SharedModule],
+  imports: [CommonModule, AdminRoutingModule, SharedModule, MaterialModule],
 })
 export class AdminModule {}
