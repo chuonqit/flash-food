@@ -102,3 +102,17 @@ a {
     max-height: 100% !important;
   }
 }
+
+.a-page-button {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: #666666;
+
+  & a {
+    border-radius: 0 !important;
+
+    & + a {
+      border-left: 0 !important;
+    }
+  }
+}

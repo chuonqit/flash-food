@@ -1,1 +1,19 @@
-<p>admin-sidenav</p>
+<div class="sidenav">
+  <mat-nav-list>
+    <a
+      mat-list-item
+      routerLinkActive="active"
+      [routerLink]="['/admin']"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Trang chủ
+    </a>
+    <a
+      mat-list-item
+      routerLinkActive="active"
+      [routerLink]="['/admin/products']"
+    >
+      Quản lí sản phẩm
+    </a>
+  </mat-nav-list>
+</div>
