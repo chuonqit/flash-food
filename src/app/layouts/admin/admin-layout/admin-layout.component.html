@@ -9,7 +9,9 @@
     [opened]="!mobileQuery.matches"
     [mode]="mobileQuery.matches ? 'over' : 'side'"
   >
-    <app-admin-sidenav></app-admin-sidenav>
+    <app-admin-sidenav
+      (click)="mobileQuery.matches && sidenav.close()"
+    ></app-admin-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
