@@ -174,3 +174,10 @@ export const PRODUCT_DATA: ProductElement[] = [
     price: 21000,
   },
 ];
+
+export interface TestProduct {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}

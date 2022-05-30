@@ -1,16 +1,17 @@
 <app-admin-toolbar (sidenav)="sidenav.toggle()"></app-admin-toolbar>
 <mat-sidenav-container class="a-container">
   <mat-sidenav
-    [opened]="!mobileQuery.matches"
     #sidenav
     [fixedTopGap]="60"
+    [autoFocus]="false"
     [fixedBottomGap]="0"
     [fixedInViewport]="true"
+    [opened]="!mobileQuery.matches"
     [mode]="mobileQuery.matches ? 'over' : 'side'"
   >
     <app-admin-sidenav></app-admin-sidenav>
   </mat-sidenav>
-  <mat-sidenav-content class="a-content">
+  <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

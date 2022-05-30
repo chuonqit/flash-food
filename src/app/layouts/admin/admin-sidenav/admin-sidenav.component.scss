@@ -1,7 +1,19 @@
 .sidenav {
   width: 300px;
+
+  @media (max-width: 576px) {
+    width: 100vw;
+  }
+}
+
+.mat-nav-list {
+  padding-top: 0;
+}
+
+.mat-list-item {
+  height: 50px !important;
 }
 
 .mat-list-item.active {
-  background-color: #f5f5f5;
+  background-color: #f0f0f0;
 }

@@ -105,14 +105,35 @@ a {
 
 .a-page-button {
   display: inline-block;
-  margin-bottom: 15px;
   color: #666666;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  width: 100%;
 
   & a {
     border-radius: 0 !important;
+    border-left: 0 !important;
+    border-bottom: 0 !important;
+    border-top: 0 !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+
+    @media (max-width: 768px) {
+      width: 50%;
+      overflow: hidden;
+      text-overflow: ellipsis !important;
+      white-space: nowrap;
+      margin-bottom: -5px;
+
+      &:nth-child(2n) {
+        border-right: 0 !important;
+      }
+    }
 
     & + a {
       border-left: 0 !important;
     }
   }
+}
+
+.a-content {
+  padding: 15px;
 }
