@@ -6,32 +6,32 @@ import { ProductElement } from 'src/app/shared/models/Product.model';
 import { CategoryService } from 'src/app/shared/services/category.service';
 
 @Component({
-  selector: 'app-drink',
-  templateUrl: './drink.component.html',
-  styleUrls: ['./drink.component.scss'],
+  selector: 'app-drink-more',
+  templateUrl: './drink-more.component.html',
+  styleUrls: ['./drink-more.component.scss'],
 })
-export class DrinkComponent implements OnInit {
+export class DrinkMoreComponent implements OnInit {
   ascii: string | null;
   products: ProductElement[];
-  category: CategoryElement | null;
+  title: string | null;
 
   constructor(
-    private _activatedRoute: ActivatedRoute,
     private _pageTitle: Title,
+    private _activatedRoute: ActivatedRoute,
     private categoryService: CategoryService
   ) {
-    this.products = [];
-    this.category = null;
     this.ascii = this._activatedRoute.snapshot.paramMap.get('ascii');
+    this.products = [];
+    this.title = null;
   }
 
   ngOnInit(): void {
-    this._pageTitle.setTitle('Đồ uống');
     this.categoryService
-      .getProductsCategoryType('do-uong')
+      .getProductsCategoryAscii(this.ascii)
       .subscribe((data) => {
         this.products = data.products;
-        this.category = data.category;
+        this.title = data.category.name;
+        this._pageTitle.setTitle(data.category.name);
       });
   }
 }

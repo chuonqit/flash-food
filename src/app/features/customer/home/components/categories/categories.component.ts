@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { HomeCategoryElement } from 'src/app/shared/models/Category.model';
+import { CategoryElement } from 'src/app/shared/models/Category.model';
 
 @Component({
   selector: 'app-categories',
@@ -7,7 +7,7 @@ import { HomeCategoryElement } from 'src/app/shared/models/Category.model';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent {
-  @Input('data') categories: HomeCategoryElement[];
+  @Input('data') categories: CategoryElement[];
 
   constructor() {
     this.categories = [];

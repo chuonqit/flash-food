@@ -2,10 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { debounceTime, Subject } from 'rxjs';
 import { ProductDialogComponent } from 'src/app/shared/components/product-dialog/product-dialog.component';
-import {
-  ProductElement,
-  PRODUCT_DATA,
-} from 'src/app/shared/models/Product.model';
+import { ProductElement } from 'src/app/shared/models/Product.model';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-banner',
@@ -91,7 +89,10 @@ export class BannerComponent implements OnInit {
   isLoading: boolean;
   searchResult: ProductElement[];
 
-  constructor(public _dialog: MatDialog) {
+  constructor(
+    public _dialog: MatDialog,
+    private productService: ProductService
+  ) {
     this.isSearch = false;
     this.isLoading = false;
     this.searchResult = [];
@@ -125,14 +126,11 @@ export class BannerComponent implements OnInit {
   }
 
   handleSearchChange(value: string) {
-    const result = PRODUCT_DATA.filter((product) =>
-      product.name.toLowerCase().includes(value.toLowerCase())
-    )
-      .slice(0, 5)
-      .sort((a, b) => b.price - a.price);
-    this.isSearch = true;
-    this.isLoading = false;
-    this.searchResult = [...result];
+    this.productService.searchProducts(value).subscribe((data) => {
+      this.isSearch = true;
+      this.isLoading = false;
+      this.searchResult = [...data];
+    });
   }
 
   clearSearch(elem: HTMLInputElement) {

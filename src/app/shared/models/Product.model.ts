@@ -1,11 +1,36 @@
-export interface ProductElement {
+import { AttributeElement } from './Attribute.model';
+import { CategoryElement } from './Category.model';
+
+export interface ProductElementTest {
   id: number;
   name: string;
   image: string;
   price: number;
 }
 
-export const PRODUCT_DATA: ProductElement[] = [
+export interface ProductElement {
+  _id: string;
+  name: string;
+  image: string;
+  price: number;
+  newPrice: number;
+  description: string;
+  category: string | CategoryElement;
+  type: 'do-an' | 'do-uong';
+  attributes: {
+    size: string[] | AttributeElement[];
+    topping: string[] | AttributeElement[];
+    ice: string[] | AttributeElement[];
+    sugar: string[] | AttributeElement[];
+  };
+}
+
+export interface ProductsCategoryElement {
+  category: CategoryElement;
+  products: ProductElement[];
+}
+
+export const PRODUCT_DATA: ProductElementTest[] = [
   {
     id: 1,
     name: 'Product',

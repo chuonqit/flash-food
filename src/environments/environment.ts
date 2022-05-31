@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://jsonplaceholder.typicode.com/',
+  apiUrl: 'https://flash-food-server.vercel.app/api/',
 };
 
 /*

@@ -27,9 +27,14 @@
           <mat-icon (click)="increase()">add_box</mat-icon>
         </button>
       </div>
-      <div class="description">
-        Thành phần món ăn bao gồm: - Bánh đa ( chính gốc Quỳnh Côi) - Cá chiên
-        giòn, dai - Rau thơm, gia vị ...
+      <div class="description" *ngIf="data.description">
+        {{ data.description }}
+      </div>
+      <div
+        class="description"
+        *ngIf="data.description == '' || !data.description"
+      >
+        Chưa có thông tin
       </div>
     </div>
   </div>

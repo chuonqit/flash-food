@@ -1,10 +1,9 @@
+import { CategoryService } from 'src/app/shared/services/category.service';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import {
-  ProductElement,
-  PRODUCT_DATA,
-} from 'src/app/shared/models/Product.model';
+import { ProductElement } from 'src/app/shared/models/Product.model';
+import { CategoryElement } from 'src/app/shared/models/Category.model';
 
 @Component({
   selector: 'app-food',
@@ -12,23 +11,22 @@ import {
   styleUrls: ['./food.component.scss'],
 })
 export class FoodComponent implements OnInit {
-  childrenAscii: string | null;
   products: ProductElement[];
+  category: CategoryElement | null;
 
   constructor(
-    private _activatedRoute: ActivatedRoute,
-    private _pageTitle: Title
+    private _pageTitle: Title,
+    private categoryService: CategoryService
   ) {
-    this.childrenAscii =
-      this._activatedRoute.snapshot.paramMap.get('childrenAscii');
-    this.products = PRODUCT_DATA;
+    this.products = [];
+    this.category = null;
   }
 
   ngOnInit(): void {
-    let pageTitle = 'Đồ ăn ';
-    if (this.childrenAscii) {
-      pageTitle += this.childrenAscii;
-    }
-    this._pageTitle.setTitle(pageTitle);
+    this._pageTitle.setTitle('Đồ ăn');
+    this.categoryService.getProductsCategoryType('do-an').subscribe((data) => {
+      this.products = data.products;
+      this.category = data.category;
+    });
   }
 }

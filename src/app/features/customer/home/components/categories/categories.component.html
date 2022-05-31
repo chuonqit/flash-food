@@ -3,7 +3,7 @@
     <a
       class="newsfeed--list-item"
       [title]="category.name"
-      routerLink="/{{ category.parentAscii }}/{{ category.nameAscii }}"
+      routerLink="/{{ category.type }}/{{ category.nameAscii }}"
       *ngFor="let category of categories"
     >
       <div
