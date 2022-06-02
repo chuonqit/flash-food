@@ -114,3 +114,8 @@
     font-weight: 700;
   }
 }
+
+.dialog-item--content .price {
+  justify-content: flex-start;
+  gap: 10px;
+}

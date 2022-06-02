@@ -12,7 +12,15 @@
       ></div>
       <div class="product-list--content__content">
         <div class="name">{{ product.name }}</div>
-        <div class="price">
+        <div class="price" *ngIf="product.newPrice > 0">
+          <span>
+            {{ product.newPrice | currency: "đ":"symbol":"1.0-0":"vi-VN" }}
+          </span>
+          <span style="text-decoration: line-through; color: #9c9c9c">
+            {{ product.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }}
+          </span>
+        </div>
+        <div class="price" *ngIf="product.newPrice === 0">
           {{ product.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }}
         </div>
       </div>

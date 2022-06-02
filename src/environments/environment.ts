@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://flash-food-server.vercel.app/api/',
+  // apiUrl: 'http://localhost:5000/api/',
 };
 
 /*

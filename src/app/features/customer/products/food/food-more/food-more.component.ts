@@ -20,12 +20,13 @@ export class FoodMoreComponent implements OnInit {
     private _pageTitle: Title,
     private categoryService: CategoryService
   ) {
-    this.ascii = this._activatedRoute.snapshot.paramMap.get('ascii');
     this.products = [];
     this.title = null;
+    this.ascii = null;
   }
 
   ngOnInit(): void {
+    this.ascii = this._activatedRoute.snapshot.paramMap.get('ascii');
     this.categoryService
       .getProductsCategoryAscii(this.ascii)
       .subscribe((data) => {

@@ -1,4 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -8,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from './layouts/layout.module';
 import { ErrorsComponent } from './features/errors/errors.component';
 import { registerLocaleData } from '@angular/common';
+import { CoreModule } from './core/core.module';
 
 import localeVi from '@angular/common/locales/vi';
 
@@ -19,8 +19,8 @@ registerLocaleData(localeVi, 'vi-VN');
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     LayoutModule,
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

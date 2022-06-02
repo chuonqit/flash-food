@@ -31,7 +31,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
         <div class="form" [class.result]="isSearch || isLoading">
           <mat-icon *ngIf="!isSearch">search</mat-icon>
           <mat-icon
-            *ngIf="isSearch"
+            *ngIf="inputSearch.value && isSearch"
             style="cursor: pointer;"
             (click)="clearSearch(inputSearch)"
           >
@@ -45,7 +45,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
           />
           <div
             class="result-search"
-            *ngIf="isSearch && searchResult.length > 0"
+            *ngIf="inputSearch.value && isSearch && searchResult.length > 0"
           >
             <mat-list>
               <mat-list-item

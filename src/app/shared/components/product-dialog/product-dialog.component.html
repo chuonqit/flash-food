@@ -6,23 +6,26 @@
 <div mat-dialog-content>
   <div class="dialog-item">
     <div class="image">
-      <div
-        class="img"
-        style="
-      background-image: url('{{ data.image }}');
-    "
-      ></div>
+      <div class="img" style="background-image: url('{{ data.image }}');"></div>
     </div>
     <div class="dialog-item--content">
       <div class="name">{{ data.name }}</div>
-      <div class="price">
+      <div class="price" *ngIf="data.newPrice > 0">
+        <span>
+          {{ data.newPrice | currency: "đ":"symbol":"1.0-0":"vi-VN" }}
+        </span>
+        <span style="text-decoration: line-through; color: #9c9c9c">
+          {{ data.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }}
+        </span>
+      </div>
+      <div class="price" *ngIf="data.newPrice === 0">
         {{ data.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }}
       </div>
       <div class="quantity">
         <button>
           <mat-icon (click)="decrease()">indeterminate_check_box</mat-icon>
         </button>
-        <input type="number" min="1" [value]="quantity" autofocus />
+        <input type="number" min="1" disabled [value]="quantity" autofocus />
         <button>
           <mat-icon (click)="increase()">add_box</mat-icon>
         </button>
@@ -55,6 +58,9 @@
     color="primary"
     (click)="handleAddCart(note.value)"
   >
-    Thêm +{{ data.price * quantity | currency: "đ":"symbol":"1.0-0":"vi-VN" }}
+    Thêm +{{
+      (data.newPrice == 0 ? data.price : data.newPrice) * quantity
+        | currency: "đ":"symbol":"1.0-0":"vi-VN"
+    }}
   </button>
 </div>

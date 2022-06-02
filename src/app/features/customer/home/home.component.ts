@@ -1,9 +1,7 @@
-import { ProductService } from 'src/app/shared/services/product.service';
 import { Component, OnInit } from '@angular/core';
-import { CategoryElement } from 'src/app/shared/models/Category.model';
 import { Title } from '@angular/platform-browser';
-import { ProductElement } from 'src/app/shared/models/Product.model';
-import { CategoryService } from 'src/app/shared/services/category.service';
+import { HomeElement } from 'src/app/shared/models/Home.model';
+import { HomeService } from 'src/app/shared/services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -11,24 +9,17 @@ import { CategoryService } from 'src/app/shared/services/category.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  categories: CategoryElement[];
-  products: ProductElement[];
+  isLoading: boolean;
+  homeData!: HomeElement;
 
-  constructor(
-    private _pageTitle: Title,
-    private productService: ProductService,
-    private cateogryService: CategoryService
-  ) {
-    this.categories = [];
-    this.products = [];
+  constructor(private _pageTitle: Title, private homeService: HomeService) {
+    this.isLoading = true;
   }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((data) => {
-      this.products = data;
-    });
-    this.cateogryService.getCategories().subscribe((data) => {
-      this.categories = data;
+    this.homeService.getHomeData().subscribe((data) => {
+      this.homeData = data;
+      this.isLoading = false;
     });
     this._pageTitle.setTitle('Trang chủ');
   }

@@ -1,5 +1,6 @@
 import { AttributeElement } from './Attribute.model';
 import { CategoryElement } from './Category.model';
+import { Paginator } from './Paginator.model';
 
 export interface ProductElementTest {
   id: number;
@@ -28,6 +29,11 @@ export interface ProductElement {
 export interface ProductsCategoryElement {
   category: CategoryElement;
   products: ProductElement[];
+}
+
+export interface ProductPaginatorElement {
+  data: ProductElement[];
+  paginator: Paginator;
 }
 
 export const PRODUCT_DATA: ProductElementTest[] = [

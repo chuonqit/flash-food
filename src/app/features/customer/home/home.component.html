@@ -1,25 +1,30 @@
-<app-banner
-  image="/assets/images/home-banner.jpg"
-  title="khi đặt món trên 150k"
-  title-highlight="miễn phí giao hàng"
-></app-banner>
+<div *ngIf="!isLoading">
+  <app-banner
+    image="/assets/images/home-banner.jpg"
+    title="khi đặt món trên 150k"
+    title-highlight="miễn phí giao hàng"
+  ></app-banner>
 
-<div class="container">
-  <app-categories [data]="categories"></app-categories>
-  <app-product-list title="MÓN MỚI" [data]="products"></app-product-list>
-  <app-product-list title="Khuyến mãi" [data]="products">
-    <div class="center">
-      <a class="button-view-more" routerLink="/khuyen-mai"> Xem thêm </a>
-    </div>
-  </app-product-list>
-  <app-product-list title="Đồ ăn" [data]="products">
-    <div class="center">
-      <a class="button-view-more" routerLink="/do-an"> Xem thêm </a>
-    </div>
-  </app-product-list>
-  <app-product-list title="Đồ uống" [data]="products">
-    <div class="center">
-      <a class="button-view-more" routerLink="/do-uong"> Xem thêm </a>
-    </div>
-  </app-product-list>
+  <div class="container">
+    <app-categories [data]="homeData.categories"></app-categories>
+    <app-product-list
+      title="MÓN MỚI"
+      [data]="homeData.productsNew"
+    ></app-product-list>
+    <app-product-list title="Khuyến mãi" [data]="homeData.productsPromotion">
+      <div class="center">
+        <a class="button-view-more" routerLink="/khuyen-mai"> Xem thêm </a>
+      </div>
+    </app-product-list>
+    <app-product-list title="Đồ ăn" [data]="homeData.productsFood">
+      <div class="center">
+        <a class="button-view-more" routerLink="/do-an"> Xem thêm </a>
+      </div>
+    </app-product-list>
+    <app-product-list title="Đồ uống" [data]="homeData.productsDrink">
+      <div class="center">
+        <a class="button-view-more" routerLink="/do-uong"> Xem thêm </a>
+      </div>
+    </app-product-list>
+  </div>
 </div>
