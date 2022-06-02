@@ -14,6 +14,7 @@ export class FoodMoreComponent implements OnInit {
   ascii: string | null;
   products: ProductElement[];
   title: string | null;
+  isLoading: boolean;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -23,6 +24,7 @@ export class FoodMoreComponent implements OnInit {
     this.products = [];
     this.title = null;
     this.ascii = null;
+    this.isLoading = true;
   }
 
   ngOnInit(): void {
@@ -33,6 +35,7 @@ export class FoodMoreComponent implements OnInit {
         this.products = data.products;
         this.title = data.category.name;
         this._pageTitle.setTitle(data.category.name);
+        this.isLoading = false;
       });
   }
 }

@@ -1,3 +1,4 @@
+import { AttributeElement } from './../models/Attribute.model';
 import { Injectable } from '@angular/core';
 import { ApiService } from 'src/app/core/services/api.service';
 import {
@@ -15,11 +16,9 @@ export class ProductService {
     return this.http.get<ProductElement[]>('products');
   }
 
-  getProductsWithPaginator(page: number, size: number) {
-    console.log(`products?page=${page}&limit=${size}`);
-
+  getProductsWithPaginator(page: string | number, size: string | number) {
     return this.http.get<ProductPaginatorElement>(
-      `products?page=${page}&limit=${size}`
+      `products?page=${page}&limit=${size}&sort_by=new-date`
     );
   }
 
@@ -29,5 +28,15 @@ export class ProductService {
 
   searchProducts(keyword: string) {
     return this.http.post<ProductElement[]>('products/search', { keyword });
+  }
+
+  getAttributeType(parentType: string) {
+    return this.http.get<AttributeElement[]>(
+      `attributes/products/${parentType}`
+    );
+  }
+
+  createProducts(payload: ProductElement) {
+    return this.http.post<ProductElement>('products', payload);
   }
 }

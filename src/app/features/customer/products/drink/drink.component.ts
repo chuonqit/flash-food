@@ -14,6 +14,7 @@ export class DrinkComponent implements OnInit {
   ascii: string | null;
   products: ProductElement[];
   category: CategoryElement | null;
+  isLoading: boolean;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -23,6 +24,7 @@ export class DrinkComponent implements OnInit {
     this.products = [];
     this.category = null;
     this.ascii = this._activatedRoute.snapshot.paramMap.get('ascii');
+    this.isLoading = true;
   }
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class DrinkComponent implements OnInit {
       .subscribe((data) => {
         this.products = data.products;
         this.category = data.category;
+        this.isLoading = false;
       });
   }
 }

@@ -1,0 +1,9 @@
+strong {
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  table {
+    min-width: 1000px !important;
+  }
+}

@@ -13,6 +13,7 @@ import { CategoryElement } from 'src/app/shared/models/Category.model';
 export class FoodComponent implements OnInit {
   products: ProductElement[];
   category: CategoryElement | null;
+  isLoading: boolean;
 
   constructor(
     private _pageTitle: Title,
@@ -20,6 +21,7 @@ export class FoodComponent implements OnInit {
   ) {
     this.products = [];
     this.category = null;
+    this.isLoading = true;
   }
 
   ngOnInit(): void {
@@ -27,6 +29,7 @@ export class FoodComponent implements OnInit {
     this.categoryService.getProductsCategoryType('do-an').subscribe((data) => {
       this.products = data.products;
       this.category = data.category;
+      this.isLoading = false;
     });
   }
 }

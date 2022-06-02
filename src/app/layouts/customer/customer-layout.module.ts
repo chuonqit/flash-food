@@ -14,6 +14,7 @@ import { CustomerFooterComponent } from './customer-footer/customer-footer.compo
     CustomerFooterComponent,
   ],
   imports: [RouterModule, CommonModule, MaterialModule],
+  providers: [],
   exports: [CustomerHeaderComponent, CustomerFooterComponent],
 })
 export class CustomerLayoutModule {}

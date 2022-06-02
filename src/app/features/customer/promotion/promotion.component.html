@@ -1,3 +1,7 @@
-<div class="container">
+<div class="loader" *ngIf="isLoading">
+  <div id="loading-2"></div>
+</div>
+
+<div class="container" *ngIf="!isLoading">
   <app-product-list title="Khuyến mãi" [data]="products"> </app-product-list>
 </div>

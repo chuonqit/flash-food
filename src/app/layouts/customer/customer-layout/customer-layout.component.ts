@@ -24,7 +24,6 @@ export class CustomerLayoutComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     window.addEventListener('scroll', this.checkPageYOffset);
   }
-
   ngOnDestroy(): void {
     window.removeEventListener('scroll', this.checkPageYOffset);
   }

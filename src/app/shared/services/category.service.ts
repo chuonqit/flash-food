@@ -13,6 +13,10 @@ export class CategoryService {
     return this.http.get<CategoryElement[]>('categories');
   }
 
+  getProductsCategoriesType(type: string) {
+    return this.http.get<CategoryElement[]>(`categories/list-type/${type}`);
+  }
+
   getProductsCategoryType(type: string | null) {
     return this.http.get<ProductsCategoryElement>(`categories/type/${type}`);
   }
