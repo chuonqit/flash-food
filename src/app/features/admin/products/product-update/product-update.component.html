@@ -1,4 +1,10 @@
-<app-breadcrumb></app-breadcrumb>
+<app-breadcrumb>
+  <mat-progress-bar mode="indeterminate" *ngIf="isSubmit"></mat-progress-bar>
+</app-breadcrumb>
+
+<div class="a-page-button">
+  <a routerLink="/admin/products" mat-button> Danh sách sản phẩm </a>
+</div>
 
 <div class="a-content">
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form-full">
@@ -25,10 +31,26 @@
         <mat-label>Tên sản phẩm</mat-label>
         <input matInput formControlName="name" />
       </mat-form-field>
-      <mat-form-field appearance="standard">
+      <div>
         <mat-label>Hình ảnh</mat-label>
-        <input matInput formControlName="image" />
-      </mat-form-field>
+        <div>
+          <img
+            src="{{ imageView }}"
+            width="200px"
+            height="200px"
+            style="border-radius: 6px"
+          />
+        </div>
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          (click)="file.click()"
+        >
+          Chọn ảnh {{ file.value }}
+        </button>
+        <input type="file" hidden #file (change)="handleChangeImage($event)" />
+      </div>
       <mat-form-field appearance="standard">
         <mat-label>Gía tiền</mat-label>
         <input matInput type="number" formControlName="price" />

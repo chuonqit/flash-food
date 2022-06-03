@@ -16,6 +16,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   exports: [
@@ -35,6 +36,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatCheckboxModule,
     MatSelectModule,
     MatRadioModule,
+    MatProgressBarModule,
   ],
 })
 export class MaterialModule {}

@@ -18,6 +18,8 @@ export class ProductUpdateComponent implements OnInit {
   isAttribute: boolean;
   categories: CategoryElement[];
   attributes: AttributeElement[];
+  imageView: string;
+  isSubmit: boolean;
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _snackBar: MatSnackBar,
@@ -44,6 +46,26 @@ export class ProductUpdateComponent implements OnInit {
     this.categories = [];
     this.attributes = [];
     this.productId = '';
+    this.imageView = '';
+    this.isSubmit = false;
+  }
+
+  getBase64(event: any) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  }
+
+  async handleChangeImage(event: any) {
+    const imageBase64: any = await this.getBase64(event);
+    this.productForm.patchValue({
+      image: JSON.stringify({
+        base64: imageBase64,
+      }),
+    });
   }
 
   getCategoriesByType() {
@@ -64,6 +86,7 @@ export class ProductUpdateComponent implements OnInit {
     this.productId = this._activatedRoute.snapshot.params['id'];
     this.productService.getProduct(this.productId).subscribe((data) => {
       this.getCategoriesByType();
+      this.imageView = data.image;
       this.productForm.patchValue({
         name: data.name,
         image: data.image,
@@ -81,10 +104,10 @@ export class ProductUpdateComponent implements OnInit {
       });
 
       if (
-        data.attributes.ice ||
-        data.attributes.sugar ||
-        data.attributes.size ||
-        data.attributes.topping
+        data.attributes.ice.length > 0 ||
+        data.attributes.sugar.length > 0 ||
+        data.attributes.size.length > 0 ||
+        data.attributes.topping.length > 0
       ) {
         this.isAttribute = true;
       }
@@ -93,6 +116,7 @@ export class ProductUpdateComponent implements OnInit {
 
   onSubmit() {
     if (!this.productForm.invalid) {
+      this.isSubmit = true;
       this.productService
         .updateProducts({
           _id: this.productId,

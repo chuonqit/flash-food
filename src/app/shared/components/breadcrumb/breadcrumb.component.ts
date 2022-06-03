@@ -10,6 +10,7 @@ interface BreadcrumbElement {
   selector: 'app-breadcrumb',
   template: `
     <ul class="app-breadcrumb" *ngIf="breadcrumbs.length > 0">
+      <ng-content></ng-content>
       <li class="app-breadcrumb--item" *ngFor="let breadcrumb of breadcrumbs">
         <a
           class="app-breadcrumb--link"

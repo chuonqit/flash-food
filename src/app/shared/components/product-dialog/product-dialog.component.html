@@ -62,6 +62,7 @@
             color="primary"
             *ngFor="let size of data.attributes.size"
             [value]="size._id"
+            name="size"
           >
             {{ size.name }}
             <span
@@ -80,6 +81,7 @@
             color="primary"
             *ngFor="let ice of data.attributes.ice"
             [value]="ice._id"
+            name="ice"
           >
             {{ ice.name }}
             <span style="color: #9c9c9c; font-size: 12px" *ngIf="ice.price > 0">

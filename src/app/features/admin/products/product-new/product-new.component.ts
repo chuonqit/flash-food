@@ -43,6 +43,24 @@ export class ProductNewComponent implements OnInit {
     this.attributes = [];
   }
 
+  getBase64(event: any) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  }
+
+  async handleChangeImage(event: any) {
+    const imageBase64: any = await this.getBase64(event);
+    this.productForm.patchValue({
+      image: JSON.stringify({
+        base64: imageBase64,
+      }),
+    });
+  }
+
   getCategoriesByType() {
     this.productForm.get('type')?.valueChanges.subscribe((value) => {
       this.categoryService
