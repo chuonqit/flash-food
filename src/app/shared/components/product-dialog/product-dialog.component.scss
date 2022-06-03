@@ -119,3 +119,40 @@
   justify-content: flex-start;
   gap: 10px;
 }
+
+.other {
+  display: flex;
+
+  & .item {
+    width: 50%;
+    flex: 1;
+    border-right: 1px solid #cccccc;
+    padding-right: 10px;
+    & div {
+      margin-bottom: 15px;
+    }
+
+    & strong {
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    &:last-child {
+      border: 0;
+      padding-right: 0;
+      padding-left: 10px;
+    }
+
+    & mat-checkbox,
+    & mat-radio-button {
+      display: block;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+
+    mat-checkbox label {
+      text-align: left;
+      width: 100% !important;
+    }
+  }
+}

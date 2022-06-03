@@ -1,3 +1,6 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmDialogComponent } from './../../../../shared/components/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Paginator } from 'src/app/shared/models/Paginator.model';
@@ -19,7 +22,13 @@ export class ProductListComponent implements OnInit {
   previousPage: number | null;
   totalPage: number | null;
 
-  constructor(private productService: ProductService) {
+  constructor(
+    private productService: ProductService,
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar,
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router
+  ) {
     this.dataSource = [];
     this.displayedColumns = [
       'image',
@@ -30,22 +39,50 @@ export class ProductListComponent implements OnInit {
       'action',
     ];
     this.currentPage = 1;
-    this.pageSize = 5;
+    this.pageSize = 1;
     this.nextPage = null;
     this.previousPage = null;
     this.totalPage = null;
   }
 
+  handleDelete(id: string): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe((ok) => {
+      if (ok) {
+        this.productService.deleteProducts(id).subscribe(() => {
+          this.getData();
+          this._snackBar.open('Xóa thành thành công', '', {
+            duration: 5000,
+          });
+        });
+      }
+    });
+  }
+
   handlePreviousPage() {
     this.currentPage = Number(this.previousPage);
+    this._router.navigate([], {
+      queryParams: {
+        page: this.currentPage,
+      },
+    });
     this.getData();
   }
   handleNextPage() {
     this.currentPage = Number(this.nextPage);
+    this._router.navigate([], {
+      queryParams: {
+        page: this.currentPage,
+      },
+    });
     this.getData();
   }
 
   ngOnInit(): void {
+    this.currentPage = this._activatedRoute.snapshot.queryParams['page'];
     this.getData();
   }
 

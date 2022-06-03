@@ -1,2 +1,135 @@
 <app-breadcrumb></app-breadcrumb>
-<p>product-update {{ productId }}</p>
+
+<div class="a-content">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form-full">
+    <mat-form-field appearance="standard">
+      <mat-label>Loại sản phẩm</mat-label>
+      <mat-select formControlName="type" (valueChange)="getCategoriesByType()">
+        <mat-option value="do-an">Đồ ăn</mat-option>
+        <mat-option value="do-uong">Đồ uống</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="categories.length">
+      <mat-form-field appearance="standard">
+        <mat-label>Danh mục</mat-label>
+        <mat-select formControlName="category">
+          <mat-option
+            *ngFor="let category of categories"
+            [value]="category._id"
+          >
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Tên sản phẩm</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Hình ảnh</mat-label>
+        <input matInput formControlName="image" />
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Gía tiền</mat-label>
+        <input matInput type="number" formControlName="price" />
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Giá tiền mới</mat-label>
+        <input matInput type="number" formControlName="newPrice" />
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Mô tả</mat-label>
+        <textarea matInput formControlName="description" rows="5"></textarea>
+      </mat-form-field>
+      <mat-checkbox
+        color="primary"
+        [checked]="isAttribute"
+        (change)="isAttribute = !isAttribute"
+      >
+        Lưa chọn đi kèm
+      </mat-checkbox>
+      <mat-grid-list
+        cols="2"
+        rowHeight="71px"
+        formGroupName="attributes"
+        *ngIf="isAttribute"
+      >
+        <mat-grid-tile>
+          <mat-form-field appearance="standard" style="padding-right: 7px">
+            <mat-label>Đồ kèm theo</mat-label>
+            <mat-select formControlName="topping" multiple>
+              <ng-container *ngFor="let attribute of attributes">
+                <mat-option
+                  *ngIf="attribute.type == 'topping'"
+                  [value]="attribute._id"
+                >
+                  {{ attribute.name }}
+                  <span style="color: #9c9c9c; font-size: 12px">
+                    ({{
+                      attribute.price | currency: "đ":"symbol":"1.0-0":"vi-VN"
+                    }})
+                  </span>
+                </mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="standard" style="padding-left: 7px">
+            <mat-label>Kích cỡ</mat-label>
+            <mat-select formControlName="size" multiple>
+              <ng-container *ngFor="let attribute of attributes">
+                <mat-option
+                  *ngIf="attribute.type == 'size'"
+                  [value]="attribute._id"
+                >
+                  {{ attribute.name }}
+                </mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="standard" style="padding-right: 7px">
+            <mat-label>Đá</mat-label>
+            <mat-select formControlName="ice" multiple>
+              <ng-container *ngFor="let attribute of attributes">
+                <mat-option
+                  *ngIf="attribute.type == 'ice'"
+                  [value]="attribute._id"
+                >
+                  {{ attribute.name }}
+                </mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="standard" style="padding-left: 7px">
+            <mat-label>Đường</mat-label>
+            <mat-select formControlName="sugar" multiple>
+              <ng-container *ngFor="let attribute of attributes">
+                <mat-option
+                  *ngIf="attribute.type == 'sugar'"
+                  [value]="attribute._id"
+                >
+                  {{ attribute.name }}
+                </mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div style="margin-top: 20px">
+        <button
+          mat-raised-button
+          color="primary"
+          class="btn btn-success"
+          style="margin-right: 15px"
+        >
+          Lưu lại
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

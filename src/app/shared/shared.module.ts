@@ -7,6 +7,7 @@ import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
 import { MaterialModule } from '../materials/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductListComponent,
     NewsfeedComponent,
     ProductDialogComponent,
+    ConfirmDialogComponent,
   ],
   imports: [RouterModule, CommonModule, MaterialModule],
   exports: [

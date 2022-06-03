@@ -7,6 +7,8 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
+  margin-right: 16px;
+  color: #412fdc;
 }
 
 .admin-toolbar {
@@ -17,4 +19,12 @@
   top: 0;
   left: 0;
   z-index: 1000;
+}
+
+.toolbar--logo {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 40px;
+  width: 130px;
 }

@@ -16,13 +16,13 @@ export interface ProductElement {
   price: number;
   newPrice: number;
   description: string;
-  category: string | CategoryElement;
+  category: CategoryElement;
   type: 'do-an' | 'do-uong';
   attributes: {
-    size: string[] | AttributeElement[];
-    topping: string[] | AttributeElement[];
-    ice: string[] | AttributeElement[];
-    sugar: string[] | AttributeElement[];
+    size: AttributeElement[];
+    topping: AttributeElement[];
+    ice: AttributeElement[];
+    sugar: AttributeElement[];
   };
 }
 

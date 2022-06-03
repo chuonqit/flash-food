@@ -50,6 +50,87 @@
       #note
     ></textarea>
   </mat-form-field>
+  <div class="other">
+    <div
+      class="item"
+      *ngIf="data.attributes.size.length || data.attributes.ice.length"
+    >
+      <div *ngIf="data.attributes.size.length">
+        <strong>Kích cỡ</strong>
+        <div>
+          <mat-radio-button
+            color="primary"
+            *ngFor="let size of data.attributes.size"
+            [value]="size._id"
+          >
+            {{ size.name }}
+            <span
+              style="color: #9c9c9c; font-size: 12px"
+              *ngIf="size.price > 0"
+            >
+              ({{ size.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }})
+            </span>
+          </mat-radio-button>
+        </div>
+      </div>
+      <div *ngIf="data.attributes.ice.length">
+        <strong>Đá</strong>
+        <div>
+          <mat-radio-button
+            color="primary"
+            *ngFor="let ice of data.attributes.ice"
+            [value]="ice._id"
+          >
+            {{ ice.name }}
+            <span style="color: #9c9c9c; font-size: 12px" *ngIf="ice.price > 0">
+              ({{ ice.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }})
+            </span>
+          </mat-radio-button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="item"
+      *ngIf="data.attributes.topping.length || data.attributes.sugar.length"
+    >
+      <div *ngIf="data.attributes.topping.length">
+        <strong>Topping</strong>
+        <div>
+          <mat-checkbox
+            color="primary"
+            *ngFor="let topping of data.attributes.topping"
+            [value]="topping._id"
+          >
+            {{ topping.name }}
+            <span
+              style="color: #9c9c9c; font-size: 12px"
+              *ngIf="topping.price > 0"
+            >
+              ({{ topping.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }})
+            </span>
+          </mat-checkbox>
+        </div>
+      </div>
+      <div *ngIf="data.attributes.sugar.length">
+        <strong>Đường</strong>
+        <div>
+          <mat-checkbox
+            color="primary"
+            *ngFor="let sugar of data.attributes.sugar"
+            [value]="sugar._id"
+          >
+            {{ sugar.name }}
+            <span
+              style="color: #9c9c9c; font-size: 12px"
+              *ngIf="sugar.price > 0"
+            >
+              ({{ sugar.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }})
+            </span>
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div mat-dialog-actions>
   <button

@@ -15,10 +15,6 @@
     </mat-form-field>
     <div *ngIf="categories.length">
       <mat-form-field appearance="standard">
-        <mat-label>Tên sản phẩm</mat-label>
-        <input matInput formControlName="name" />
-      </mat-form-field>
-      <mat-form-field appearance="standard">
         <mat-label>Danh mục</mat-label>
         <mat-select formControlName="category">
           <mat-option
@@ -27,6 +23,10 @@
             >{{ category.name }}</mat-option
           >
         </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Tên sản phẩm</mat-label>
+        <input matInput formControlName="name" />
       </mat-form-field>
       <mat-form-field appearance="standard">
         <mat-label>Hình ảnh</mat-label>

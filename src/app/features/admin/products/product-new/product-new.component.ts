@@ -52,8 +52,6 @@ export class ProductNewComponent implements OnInit {
         });
 
       this.productService.getAttributeType(value).subscribe((data) => {
-        console.log(data);
-
         this.attributes = data;
       });
     });

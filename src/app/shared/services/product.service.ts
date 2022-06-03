@@ -16,6 +16,10 @@ export class ProductService {
     return this.http.get<ProductElement[]>('products');
   }
 
+  getProduct(id: string) {
+    return this.http.get<ProductElement>(`products/${id}`);
+  }
+
   getProductsWithPaginator(page: string | number, size: string | number) {
     return this.http.get<ProductPaginatorElement>(
       `products?page=${page}&limit=${size}&sort_by=new-date`
@@ -38,5 +42,13 @@ export class ProductService {
 
   createProducts(payload: ProductElement) {
     return this.http.post<ProductElement>('products', payload);
+  }
+
+  updateProducts(payload: ProductElement) {
+    return this.http.put<ProductElement>(`products/${payload._id}`, payload);
+  }
+
+  deleteProducts(id: string) {
+    return this.http.delete<ProductElement>(`products/${id}`);
   }
 }

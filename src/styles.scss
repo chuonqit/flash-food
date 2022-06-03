@@ -76,9 +76,8 @@ a {
 
 @media (max-width: 768px) {
   .cdk-overlay-pane {
-    width: 100vw !important;
-    min-width: 100vw !important;
-    height: 100vh !important;
+    width: 90vw !important;
+    min-width: 90vw !important;
   }
 
   app-product-dialog.ng-star-inserted {
@@ -168,7 +167,7 @@ a {
   position: relative;
   width: 30px;
   height: 30px;
-  background: #3498db;
+  background: #3c26ff;
   border-radius: 50px;
   animation: loading-2 1.5s infinite linear;
 }
@@ -176,8 +175,8 @@ a {
   position: absolute;
   width: 60px;
   height: 60px;
-  border-top: 10px solid #9b59b6;
-  border-bottom: 10px solid #9b59b6;
+  border-top: 10px solid #412fdc;
+  border-bottom: 10px solid #412fdc;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-radius: 50px;
@@ -192,7 +191,7 @@ a {
   }
   50% {
     transform: rotate(180deg);
-    background: #2ecc71;
+    background: #3c26ff;
   }
   100% {
     transform: rotate(360deg);
@@ -200,19 +199,28 @@ a {
 }
 @keyframes loading-2-after {
   0% {
-    border-top: 10px solid #9b59b6;
-    border-bottom: 10px solid #9b59b6;
+    border-top: 10px solid #3121c0;
+    border-bottom: 10px solid #3121c0;
   }
   50% {
-    border-top: 10px solid #3498db;
-    border-bottom: 10px solid #3498db;
+    border-top: 10px solid #412fdc;
+    border-bottom: 10px solid #412fdc;
   }
   100% {
-    border-top: 10px solid #9b59b6;
-    border-bottom: 10px solid #9b59b6;
+    border-top: 10px solid #3121c0;
+    border-bottom: 10px solid #3121c0;
   }
 }
 
 button {
   border-radius: 0 !important;
+}
+
+.mat-raised-button.mat-primary {
+  background-color: #2e1ec2 !important;
+}
+
+.mat-raised-button.mat-primary:disabled {
+  color: #fff;
+  opacity: 0.5;
 }

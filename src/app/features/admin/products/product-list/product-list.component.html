@@ -73,7 +73,9 @@
         >
           Sửa
         </a>
-        <button mat-stroked-button>Xóa</button>
+        <button mat-stroked-button (click)="handleDelete(element._id)">
+          Xóa
+        </button>
       </td>
     </ng-container>
 
@@ -83,7 +85,7 @@
 </div>
 <div
   class="text-right"
-  style="padding: 15px"
+  style="padding: 15px; display: flex"
   *ngIf="totalPage && totalPage > 1"
 >
   <button

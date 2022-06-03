@@ -1,5 +1,7 @@
 .sidenav {
   width: 300px;
+  background-color: #2e1ec2;
+  height: 100%;
 
   @media (max-width: 576px) {
     width: 100vw;
@@ -12,8 +14,9 @@
 
 .mat-list-item {
   height: 50px !important;
+  color: #ffffff;
 }
 
 .mat-list-item.active {
-  background-color: #f0f0f0;
+  background-color: rgb(28, 12, 168);
 }
