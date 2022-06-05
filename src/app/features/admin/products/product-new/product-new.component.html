@@ -1,4 +1,6 @@
-<app-breadcrumb></app-breadcrumb>
+<app-breadcrumb>
+  <mat-progress-bar mode="indeterminate" *ngIf="isSubmit"></mat-progress-bar>
+</app-breadcrumb>
 
 <div class="a-page-button">
   <a routerLink="/admin/products" mat-button> Danh sách sản phẩm </a>
@@ -31,13 +33,30 @@
       <div>
         <mat-label>Hình ảnh</mat-label>
         <div>
+          <img
+            src="{{ imageView || '/assets/images/default-image.jpg' }}"
+            width="200px"
+            height="200px"
+            style="border-radius: 6px"
+          />
+        </div>
+        <div>
           <button
             type="button"
             mat-raised-button
             color="primary"
             (click)="file.click()"
           >
-            Chọn ảnh {{ file.value }}
+            Chọn ảnh
+          </button>
+          <button
+            type="button"
+            mat-raised-button
+            (click)="imageView = ''"
+            style="margin-left: 10px"
+            *ngIf="imageView != ''"
+          >
+            Xóa
           </button>
           <input
             type="file"

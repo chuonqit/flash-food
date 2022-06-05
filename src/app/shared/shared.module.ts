@@ -17,7 +17,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     ProductDialogComponent,
     ConfirmDialogComponent,
   ],
-  imports: [RouterModule, CommonModule, MaterialModule],
+  imports: [RouterModule, CommonModule, MaterialModule, ReactiveFormsModule],
   exports: [
     BreadcrumbComponent,
     ProductListComponent,

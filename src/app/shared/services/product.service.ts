@@ -20,9 +20,14 @@ export class ProductService {
     return this.http.get<ProductElement>(`products/${id}`);
   }
 
-  getProductsWithPaginator(page: string | number, size: string | number) {
+  getProductsWithPaginator(
+    page: string | number,
+    size: string | number,
+    keyword: string,
+    filter_by: string
+  ) {
     return this.http.get<ProductPaginatorElement>(
-      `products?page=${page}&limit=${size}&sort_by=new-date`
+      `products?page=${page}&limit=${size}&sort_by=new-date&keyword=${keyword}&filter_by=${filter_by}`
     );
   }
 

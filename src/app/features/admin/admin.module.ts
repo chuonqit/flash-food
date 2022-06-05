@@ -8,6 +8,9 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { ProductNewComponent } from './products/product-new/product-new.component';
 import { ProductUpdateComponent } from './products/product-update/product-update.component';
 import { MaterialModule } from 'src/app/materials/material.module';
+import { CategoryListComponent } from './categories/category-list/category-list.component';
+import { CategoryNewComponent } from './categories/category-new/category-new.component';
+import { CategoryUpdateComponent } from './categories/category-update/category-update.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import { MaterialModule } from 'src/app/materials/material.module';
     ProductListComponent,
     ProductNewComponent,
     ProductUpdateComponent,
+    CategoryListComponent,
+    CategoryNewComponent,
+    CategoryUpdateComponent,
   ],
   imports: [CommonModule, AdminRoutingModule, SharedModule, MaterialModule],
 })

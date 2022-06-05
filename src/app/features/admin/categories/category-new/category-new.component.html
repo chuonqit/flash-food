@@ -1,0 +1,71 @@
+<app-breadcrumb>
+  <mat-progress-bar mode="indeterminate" *ngIf="isSubmit"></mat-progress-bar>
+</app-breadcrumb>
+
+<div class="a-page-button">
+  <a routerLink="/admin/categories" mat-button> Danh sách danh mục </a>
+</div>
+<div class="a-content">
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" class="form-full">
+    <div>
+      <mat-label>Hình ảnh</mat-label>
+      <div>
+        <img
+          src="{{ imageView || '/assets/images/default-image.jpg' }}"
+          width="200px"
+          height="200px"
+          style="border-radius: 6px"
+        />
+      </div>
+      <div>
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          (click)="file.click()"
+        >
+          Chọn ảnh
+        </button>
+        <button
+          type="button"
+          mat-raised-button
+          (click)="imageView = ''"
+          style="margin-left: 10px"
+          *ngIf="imageView != ''"
+        >
+          Xóa
+        </button>
+        <input type="file" hidden #file (change)="handleChangeImage($event)" />
+      </div>
+    </div>
+    <mat-form-field appearance="standard">
+      <mat-label>Loại danh mục</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="do-an">Đồ ăn</mat-option>
+        <mat-option value="do-uong">Đồ uống</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Tên danh mục</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <div style="margin-top: 20px">
+      <button
+        mat-raised-button
+        color="primary"
+        class="btn btn-success"
+        style="margin-right: 15px"
+      >
+        Lưu lại
+      </button>
+      <button
+        type="button"
+        mat-raised-button
+        class="btn btn-success"
+        (click)="clearForm()"
+      >
+        Tạo lại
+      </button>
+    </div>
+  </form>
+</div>

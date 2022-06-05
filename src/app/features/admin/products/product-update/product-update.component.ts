@@ -61,10 +61,9 @@ export class ProductUpdateComponent implements OnInit {
 
   async handleChangeImage(event: any) {
     const imageBase64: any = await this.getBase64(event);
+    this.imageView = imageBase64;
     this.productForm.patchValue({
-      image: JSON.stringify({
-        base64: imageBase64,
-      }),
+      image: imageBase64,
     });
   }
 
@@ -84,34 +83,39 @@ export class ProductUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.productId = this._activatedRoute.snapshot.params['id'];
-    this.productService.getProduct(this.productId).subscribe((data) => {
-      this.getCategoriesByType();
-      this.imageView = data.image;
-      this.productForm.patchValue({
-        name: data.name,
-        image: data.image,
-        price: data.price,
-        newPrice: data.newPrice,
-        description: data.description,
-        type: data.type,
-        category: data.category,
-        attributes: {
-          ice: data.attributes.ice,
-          sugar: data.attributes.sugar,
-          size: data.attributes.size,
-          topping: data.attributes.topping,
-        },
-      });
+    this.productService.getProduct(this.productId).subscribe(
+      (data) => {
+        this.getCategoriesByType();
+        this.imageView = data.image;
+        this.productForm.patchValue({
+          name: data.name,
+          image: data.image,
+          price: data.price,
+          newPrice: data.newPrice,
+          description: data.description,
+          type: data.type,
+          category: data.category,
+          attributes: {
+            ice: data.attributes.ice,
+            sugar: data.attributes.sugar,
+            size: data.attributes.size,
+            topping: data.attributes.topping,
+          },
+        });
 
-      if (
-        data.attributes.ice.length > 0 ||
-        data.attributes.sugar.length > 0 ||
-        data.attributes.size.length > 0 ||
-        data.attributes.topping.length > 0
-      ) {
-        this.isAttribute = true;
+        if (
+          data.attributes.ice.length > 0 ||
+          data.attributes.sugar.length > 0 ||
+          data.attributes.size.length > 0 ||
+          data.attributes.topping.length > 0
+        ) {
+          this.isAttribute = true;
+        }
+      },
+      () => {
+        this._router.navigate(['/admin', 'products']);
       }
-    });
+    );
   }
 
   onSubmit() {

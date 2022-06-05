@@ -1,21 +1,20 @@
+import { CategoryElement } from 'src/app/shared/models/Category.model';
+import { CategoryService } from 'src/app/shared/services/category.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from './../../../../shared/components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Paginator } from 'src/app/shared/models/Paginator.model';
-import { ProductElement } from 'src/app/shared/models/Product.model';
-import { ProductService } from 'src/app/shared/services/product.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss'],
+  selector: 'app-category-list',
+  templateUrl: './category-list.component.html',
+  styleUrls: ['./category-list.component.scss'],
 })
-export class ProductListComponent implements OnInit {
+export class CategoryListComponent implements OnInit {
   displayedColumns: string[];
-  dataSource: ProductElement[];
+  dataSource: CategoryElement[];
   currentPage: string | number;
   pageSize: string | number;
   paginator!: Paginator;
@@ -25,19 +24,12 @@ export class ProductListComponent implements OnInit {
   searchForm: FormGroup;
 
   constructor(
-    private productService: ProductService,
+    private categoryService: CategoryService,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog
   ) {
     this.dataSource = [];
-    this.displayedColumns = [
-      'image',
-      'name',
-      'type',
-      'price',
-      'category',
-      'action',
-    ];
+    this.displayedColumns = ['image', 'name', 'type', 'action'];
     this.currentPage = 1;
     this.pageSize = 5;
     this.nextPage = null;
@@ -56,7 +48,7 @@ export class ProductListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((ok) => {
       if (ok) {
-        this.productService.deleteProducts(id).subscribe(() => {
+        this.categoryService.deleteCategory(id).subscribe(() => {
           this.getData();
           this._snackBar.open('Xóa thành thành công', '', {
             duration: 5000,
@@ -80,19 +72,19 @@ export class ProductListComponent implements OnInit {
   }
 
   getData() {
-    this.productService
-      .getProductsWithPaginator(
+    this.categoryService
+      .getCategoriesWithPaginator(
         this.currentPage,
         this.pageSize,
         this.searchForm.get('keyword')?.value,
         this.searchForm.get('filter_by')?.value
       )
-      .subscribe((products) => {
-        this.dataSource = products.data;
-        this.paginator = products.paginator;
-        this.nextPage = products.paginator.nextPage;
-        this.previousPage = products.paginator.prevPage;
-        this.totalPage = products.paginator.totalPages;
+      .subscribe((category) => {
+        this.dataSource = category.data;
+        this.paginator = category.paginator;
+        this.nextPage = category.paginator.nextPage;
+        this.previousPage = category.paginator.prevPage;
+        this.totalPage = category.paginator.totalPages;
       });
   }
 

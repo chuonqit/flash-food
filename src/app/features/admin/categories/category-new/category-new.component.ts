@@ -8,41 +8,24 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-product-new',
-  templateUrl: './product-new.component.html',
-  styleUrls: ['./product-new.component.scss'],
+  selector: 'app-category-new',
+  templateUrl: './category-new.component.html',
+  styleUrls: ['./category-new.component.scss'],
 })
-export class ProductNewComponent implements OnInit {
-  productForm: FormGroup;
-  isAttribute: boolean;
-  categories: CategoryElement[];
-  attributes: AttributeElement[];
+export class CategoryNewComponent implements OnInit {
+  categoryForm: FormGroup;
   imageView: string;
   isSubmit: boolean;
   constructor(
     private _snackBar: MatSnackBar,
     private _router: Router,
-    private categoryService: CategoryService,
-    private productService: ProductService
+    private categoryService: CategoryService
   ) {
-    this.isAttribute = false;
-    this.productForm = new FormGroup({
+    this.categoryForm = new FormGroup({
       name: new FormControl('', []),
       image: new FormControl('', []),
-      price: new FormControl(0, []),
-      newPrice: new FormControl(0, []),
-      description: new FormControl('', []),
       type: new FormControl('', []),
-      category: new FormControl('', []),
-      attributes: new FormGroup({
-        ice: new FormControl([], []),
-        size: new FormControl([], []),
-        sugar: new FormControl([], []),
-        topping: new FormControl([], []),
-      }),
     });
-    this.categories = [];
-    this.attributes = [];
     this.imageView = '';
     this.isSubmit = false;
   }
@@ -59,41 +42,27 @@ export class ProductNewComponent implements OnInit {
   async handleChangeImage(event: any) {
     const imageBase64: any = await this.getBase64(event);
     this.imageView = imageBase64;
-    this.productForm.patchValue({
+    this.categoryForm.patchValue({
       image: imageBase64,
     });
   }
 
-  getCategoriesByType() {
-    this.productForm.get('type')?.valueChanges.subscribe((value) => {
-      this.categoryService
-        .getProductsCategoriesType(value)
-        .subscribe((response) => {
-          this.categories = response;
-        });
-
-      this.productService.getAttributeType(value).subscribe((data) => {
-        this.attributes = data;
-      });
-    });
-  }
-
   clearForm() {
-    this.productForm.reset();
+    this.categoryForm.reset();
   }
 
   ngOnInit(): void {}
 
   onSubmit() {
-    if (!this.productForm.invalid) {
+    if (!this.categoryForm.invalid) {
       this.isSubmit = true;
-      this.productService
-        .createProducts(this.productForm.value)
+      this.categoryService
+        .addCategory(this.categoryForm.value)
         .subscribe(() => {
           this._snackBar.open('Thêm thành công', '', {
             duration: 5000,
           });
-          this._router.navigate(['/admin', 'products']);
+          this._router.navigate(['/admin', 'categories']);
         });
     }
   }

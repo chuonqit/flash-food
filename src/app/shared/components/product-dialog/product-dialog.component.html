@@ -25,7 +25,14 @@
         <button>
           <mat-icon (click)="decrease()">indeterminate_check_box</mat-icon>
         </button>
-        <input type="number" min="1" disabled [value]="quantity" autofocus />
+        <input
+          type="number"
+          min="1"
+          #input
+          (keyup)="inputChange(input.value)"
+          [value]="quantity"
+          autofocus
+        />
         <button>
           <mat-icon (click)="increase()">add_box</mat-icon>
         </button>
@@ -50,19 +57,19 @@
       #note
     ></textarea>
   </mat-form-field>
-  <div class="other">
+  <form [formGroup]="otherForm" class="other">
     <div
       class="item"
       *ngIf="data.attributes.size.length || data.attributes.ice.length"
     >
       <div *ngIf="data.attributes.size.length">
         <strong>Kích cỡ</strong>
-        <div>
+        <mat-radio-group formControlName="size">
           <mat-radio-button
             color="primary"
             *ngFor="let size of data.attributes.size"
             [value]="size._id"
-            name="size"
+            (click)="selectSize(size)"
           >
             {{ size.name }}
             <span
@@ -72,23 +79,22 @@
               ({{ size.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }})
             </span>
           </mat-radio-button>
-        </div>
+        </mat-radio-group>
       </div>
       <div *ngIf="data.attributes.ice.length">
         <strong>Đá</strong>
-        <div>
+        <mat-radio-group formControlName="ice">
           <mat-radio-button
             color="primary"
             *ngFor="let ice of data.attributes.ice"
             [value]="ice._id"
-            name="ice"
           >
             {{ ice.name }}
             <span style="color: #9c9c9c; font-size: 12px" *ngIf="ice.price > 0">
               ({{ ice.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }})
             </span>
           </mat-radio-button>
-        </div>
+        </mat-radio-group>
       </div>
     </div>
     <div
@@ -102,6 +108,7 @@
             color="primary"
             *ngFor="let topping of data.attributes.topping"
             [value]="topping._id"
+            formControlName="topping"
           >
             {{ topping.name }}
             <span
@@ -115,8 +122,8 @@
       </div>
       <div *ngIf="data.attributes.sugar.length">
         <strong>Đường</strong>
-        <div>
-          <mat-checkbox
+        <mat-radio-group formControlName="sugar">
+          <mat-radio-button
             color="primary"
             *ngFor="let sugar of data.attributes.sugar"
             [value]="sugar._id"
@@ -128,22 +135,20 @@
             >
               ({{ sugar.price | currency: "đ":"symbol":"1.0-0":"vi-VN" }})
             </span>
-          </mat-checkbox>
-        </div>
+          </mat-radio-button>
+        </mat-radio-group>
       </div>
     </div>
-  </div>
+  </form>
 </div>
 <div mat-dialog-actions>
   <button
     mat-raised-button
     mat-dialog-close
     color="primary"
+    [disabled]="quantity == 0"
     (click)="handleAddCart(note.value)"
   >
-    Thêm +{{
-      (data.newPrice == 0 ? data.price : data.newPrice) * quantity
-        | currency: "đ":"symbol":"1.0-0":"vi-VN"
-    }}
+    Thêm +{{ priceTotal | currency: "đ":"symbol":"1.0-0":"vi-VN" }}
   </button>
 </div>
